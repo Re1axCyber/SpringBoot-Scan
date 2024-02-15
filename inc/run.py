@@ -60,7 +60,7 @@ def random_ip():
 async def url(u,sleeps,semaphore,proxies,header_new):
     f1 = open("urlout.txt", "wb+")
     f1.close()
-    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/"}
+    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": str(random_ip),"Referer":"https://www.baidu.com/"}
     newheader = json.loads(str(JSON_handle(header, header_new)).replace("'", "\""))
     try:
         if proxies == "":
@@ -139,7 +139,7 @@ async def async_dir(url, proxies, header_new, semaphore, sleeps):
         f2.close()
 
 async def file(u, proxies, header_new):
-    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/"}
+    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": str(random_ip),"Referer":"https://www.baidu.com/"}
     newheader = json.loads(str(JSON_handle(header, header_new)).replace("'", "\""))
     async with aiohttp.ClientSession() as session:
         async with session.get(url=u, headers=newheader, proxy=proxies, timeout=6, allow_redirects=False, ssl=False) as r:
@@ -228,7 +228,7 @@ def dump(urllist, proxies, header_new):
     url4 = urllist + "gateway/actuator/heapdump"
     url5 = urllist + "hystrix.stream"
     url6 = urllist + "artemis-portal/artemis/heapdump"
-    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/"}
+    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": str(random_ip),"Referer":"https://www.baidu.com/"}
     newheader = json.loads(str(JSON_handle(header, header_new)).replace("'", "\""))
 
     try:
