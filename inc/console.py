@@ -35,8 +35,8 @@ async def SpringBoot_Scan_console(args, proxies,header_new):
             output.usage()
             sys.exit()
 
-def get_proxy(proxys):
+def get_proxy(proxies):
     pattern = r"(http|https|socks4|socks5)://([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[\d]{1,5})"
-    match = re.search(pattern, proxys)
+    match = re.search(pattern, proxies)
     proxy = {match.group(1):match.group(2)}
     return proxy
