@@ -34,8 +34,6 @@ async def SpringBoot_Scan_Proxy(args):
                         if args.urlfile:
                             proxies = args.proxy
                         await SpringBoot_Scan_Header(args, proxies)
-
-                        # await console.SpringBoot_Scan_console(args, proxies)
         except KeyboardInterrupt:
             print("Ctrl + C 手动终止了进程")
             sys.exit()

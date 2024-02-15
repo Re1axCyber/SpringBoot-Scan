@@ -432,6 +432,7 @@ def CVE_2018_1273(url, proxies, header_new):
         f2.close()
 
 def vul(url, proxies, header_new):
+    print(proxies)
     functions = {
         1: JeeSpring_2023,
         2: CVE_2022_22947,
