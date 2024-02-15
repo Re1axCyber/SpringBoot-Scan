@@ -115,7 +115,7 @@ icon_hash="116323821"||body="Whitelabel Error Page"
         对单一URL进行漏洞利用:             python3 SpringBoot-Scan.py -v example.com
         读取目标TXT进行批量漏洞扫描：      python3 SpringBoot-Scan.py -vf url.txt
         扫描并下载SpringBoot敏感文件:      python3 SpringBoot-Scan.py -d example.com
-        使用HTTP代理并自动进行连通性测试:    python3 SpringBoot-Scan.py -p <代理IP:端口>
+        使用HTTP代理并自动进行连通性测试:    python3 SpringBoot-Scan.py -p <协议://代理IP:端口>
         从TXT文件中导入自定义HTTP头部:       python3 SpringBoot-Scan.py -t header.txt
         通过ZoomEye密钥进行API下载数据:      python3 SpringBoot-Scan.py -z <ZoomEye的API-KEY>
         通过Fofa密钥进行API下载数据:         python3 SpringBoot-Scan.py -f <Fofa的API-KEY>
@@ -167,16 +167,16 @@ python3 SpringBoot-Scan.py -y <Hunter的API-KEY>
 ### 测试并使用代理
 
 ```
-python3 SpringBoot-Scan.py -p <代理IP:端口>
-python3 SpringBoot-Scan.py -p <HTTP认证账号:HTTP认证密码@代理IP:端口>
+python3 SpringBoot-Scan.py -p <协议://代理IP:端口>
+python3 SpringBoot-Scan.py -p <协议://HTTP认证账号:HTTP认证密码@代理IP:端口>
 ```
 
 ![测试代理](./pic/测试代理.png)
 
 比如我想对单一URL进行信息泄露扫描并使用代理
 ```
-python3 SpringBoot-Scan.py -u example.com -p <代理IP:端口>
-python3 SpringBoot-Scan.py -p <HTTP认证账号:HTTP认证密码@代理IP:端口>
+python3 SpringBoot-Scan.py -u example.com -p <协议://代理IP:端口>
+python3 SpringBoot-Scan.py -p <协议://HTTP认证账号:HTTP认证密码@代理IP:端口>
 ```
 同样，其他参数（`-u` / `-uf` / `-v` / `-vf` / `-d`）均可以配合代理使用
 
