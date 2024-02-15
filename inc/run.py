@@ -55,11 +55,12 @@ async def async_url(urllist,proxies,header_new):
             print(u)
         await asyncio.gather(*tasks)
         sys.exit()
-
+def random_ip():
+    return ".".join(map(str, (random.randint(0, 255) for _ in range(4))))
 async def url(u,sleeps,semaphore,proxies,header_new):
     f1 = open("urlout.txt", "wb+")
     f1.close()
-    header = {"User-Agent": random.choice(ua)}
+    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/","Authorizati0n":f"{'a'*2048}"}
     newheader = json.loads(str(JSON_handle(header, header_new)).replace("'", "\""))
     try:
         if proxies == "":
@@ -99,7 +100,6 @@ async def url(u,sleeps,semaphore,proxies,header_new):
         print("Ctrl + C 手动终止了进程")
         sys.exit()
     except Exception as e:
-        exit(f"[-] URL为{u}的任务访问错误，错误代码为{e}")
         cprint(f"[-] URL为{u}的任务访问错误，错误代码为{e}，予以跳过！", "magenta")
     count = len(open("urlout.txt", 'r').readlines())
     if count >= 1:
