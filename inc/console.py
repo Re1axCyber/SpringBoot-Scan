@@ -16,7 +16,7 @@ async def SpringBoot_Scan_console(args, proxies,header_new):
     if args.urlfile:
         asyncio.run(run.file_main(args.urlfile,proxies,header_new))
     if args.vul or args.vulfile or args.dump or args.zoomeye or args.fofa or args.hunter:
-        proxy=get_proxy()
+        proxy=get_proxy(proxies)
         if args.vul:
             urlnew = await springcheck.check(args.vul,proxies ,header_new)
             vul.vul(urlnew, proxy,header_new)
@@ -35,9 +35,8 @@ async def SpringBoot_Scan_console(args, proxies,header_new):
             output.usage()
             sys.exit()
 
-def get_proxy():
+def get_proxy(proxies):
     pattern = r"(http|https|socks4|socks5)://([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[\d]{1,5})"
-    text = "https://60.28.193.155:7834"
-    match = re.search(pattern, text)
+    match = re.search(pattern, proxies)
     proxy = {match.group(1):match.group(2)}
     return proxy
