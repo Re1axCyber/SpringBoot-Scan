@@ -60,7 +60,7 @@ def random_ip():
 async def url(u,sleeps,semaphore,proxies,header_new):
     f1 = open("urlout.txt", "wb+")
     f1.close()
-    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/","Authorizati0n":f"{'a'*2048}"}
+    header = {"User-Agent": random.choice(ua),"X-Forwarded-For": random_ip,"Referer":"https://www.baidu.com/","Authorizati0n":f"{'a'*128}"}
     newheader = json.loads(str(JSON_handle(header, header_new)).replace("'", "\""))
     try:
         if proxies == "":
